@@ -1287,7 +1287,10 @@ class Smarts(object):
     """
     def __init__(self, smartspattern):
         """Initialise with a SMARTS pattern."""
-        self.rdksmarts = Chem.MolFromSmarts(smartspattern)
+        if isinstance(smartspattern, Molecule):
+            self.rdksmarts = smartspattern.Mol
+        else:
+            self.rdksmarts = Chem.MolFromSmarts(smartspattern)
         if not self.rdksmarts:
             raise IOError("Invalid SMARTS pattern.")
 
