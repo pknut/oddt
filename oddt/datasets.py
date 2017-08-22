@@ -188,11 +188,14 @@ class _dude_target(object):
         self.home = home
         self.dude_id = dude_id
 
+
     @property
     def protein(self):
         """Read a protein file"""
+
         f = os.path.join(self.home, self.dude_id, 'receptor.pdb')
         if os.path.isfile(f):
+
             return next(toolkit.readfile('pdb', f))
         else:
             return None
@@ -200,8 +203,10 @@ class _dude_target(object):
     @property
     def ligand(self):
         """Read a ligand file"""
+
         f = os.path.join(self.home, self.dude_id, 'crystal_ligand.mol2')
         if os.path.isfile(f):
+
             return next(toolkit.readfile('mol2', f))
         else:
             return None
@@ -209,23 +214,25 @@ class _dude_target(object):
     @property
     def actives(self):
         """Read an actives file"""
+
         f = os.path.join(self.home, self.dude_id, 'actives_final.mol2.gz')
         if os.path.isfile(f):
             return toolkit.readfile('mol2', f)
         # check if file is unpacked
         elif os.path.isfile(f[:-3]):
             return toolkit.readfile('mol2', f[:-3])
+
         else:
             return None
 
     @property
     def decoys(self):
         """Read a decoys file"""
+
         f = os.path.join(self.home, self.dude_id, 'decoys_final.mol2.gz')
         if os.path.isfile(f):
             return toolkit.readfile('mol2', f)
         # check if file is unpacked
         elif os.path.isfile(f[:-3]):
             return toolkit.readfile('mol2', f[:-3])
-        else:
-            return None
+
