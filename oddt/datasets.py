@@ -152,11 +152,19 @@ class dude(object):
                    'mk01', 'pygm', 'glcm', 'comt', 'sahh', 'cxcr4', 'kith', 'ampc', 'pur2', 'fabp4',
                    'inha', 'fgfr1']
         for i in all_ids:
+<<<<<<< HEAD
             if os.path.isdir(os.path.join(self.home, i)):
                 self.ids.append(i)
                 for file in files:
                     f = os.path.join(self.home, i, file)
                     if not os.path.isfile(f) and not (file[-3:] == '.gz' and os.path.isfile(f[:-3])):
+=======
+            if os.path.isdir(join(self.home, i)):
+                self.ids.append(i)
+                for file in files:
+                    f = join(self.home, i, file)
+                    if not isfile(f) and not (isfile(f[:-3]) and file[-3:] == '.gz'):
+>>>>>>> 9efef8f... Fix problem with unpacked files
                         print('Target %s doesn\'t have file %s' % (i, file), file=sys.stderr)
         if not self.ids:
             print('No targets in directory %s' % (self.home), file=sys.stderr)
