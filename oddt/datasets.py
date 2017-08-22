@@ -219,9 +219,14 @@ class _dude_target(object):
         if os.path.isfile(f):
             return toolkit.readfile('mol2', f)
         # check if file is unpacked
+<<<<<<< HEAD
         elif os.path.isfile(f[:-3]):
             return toolkit.readfile('mol2', f[:-3])
 
+=======
+        elif isfile(f[:-3]):
+            return toolkit.readfile('mol2', f[:-3])
+>>>>>>> 6f3ca03... Add reading unpacked files
         else:
             return None
 
@@ -233,6 +238,13 @@ class _dude_target(object):
         if os.path.isfile(f):
             return toolkit.readfile('mol2', f)
         # check if file is unpacked
+<<<<<<< HEAD
         elif os.path.isfile(f[:-3]):
             return toolkit.readfile('mol2', f[:-3])
 
+=======
+        elif isfile(f[:-3]):
+            return toolkit.readfile('mol2', f[:-3])
+        else:
+            return None
+>>>>>>> 6f3ca03... Add reading unpacked files
