@@ -152,23 +152,11 @@ class dude(object):
                    'mk01', 'pygm', 'glcm', 'comt', 'sahh', 'cxcr4', 'kith', 'ampc', 'pur2', 'fabp4',
                    'inha', 'fgfr1']
         for i in all_ids:
-<<<<<<< HEAD
             if os.path.isdir(os.path.join(self.home, i)):
                 self.ids.append(i)
                 for file in files:
                     f = os.path.join(self.home, i, file)
                     if not os.path.isfile(f) and not (file[-3:] == '.gz' and os.path.isfile(f[:-3])):
-=======
-            if os.path.isdir(join(self.home, i)):
-                self.ids.append(i)
-                for file in files:
-                    f = join(self.home, i, file)
-<<<<<<< HEAD
-                    if not isfile(f) and not (isfile(f[:-3]) and file[-3:] == '.gz'):
->>>>>>> 9efef8f... Fix problem with unpacked files
-=======
-                    if not isfile(f) and not (file[-3:] == '.gz' and isfile(f[:-3])):
->>>>>>> be70edb... Fix mistake
                         print('Target %s doesn\'t have file %s' % (i, file), file=sys.stderr)
         if not self.ids:
             print('No targets in directory %s' % (self.home), file=sys.stderr)
@@ -200,14 +188,11 @@ class _dude_target(object):
         self.home = home
         self.dude_id = dude_id
 
-
     @property
     def protein(self):
         """Read a protein file"""
-
         f = os.path.join(self.home, self.dude_id, 'receptor.pdb')
         if os.path.isfile(f):
-
             return next(toolkit.readfile('pdb', f))
         else:
             return None
@@ -215,10 +200,8 @@ class _dude_target(object):
     @property
     def ligand(self):
         """Read a ligand file"""
-
         f = os.path.join(self.home, self.dude_id, 'crystal_ligand.mol2')
         if os.path.isfile(f):
-
             return next(toolkit.readfile('mol2', f))
         else:
             return None
@@ -226,37 +209,23 @@ class _dude_target(object):
     @property
     def actives(self):
         """Read an actives file"""
-
         f = os.path.join(self.home, self.dude_id, 'actives_final.mol2.gz')
         if os.path.isfile(f):
             return toolkit.readfile('mol2', f)
         # check if file is unpacked
-<<<<<<< HEAD
         elif os.path.isfile(f[:-3]):
             return toolkit.readfile('mol2', f[:-3])
-
-=======
-        elif isfile(f[:-3]):
-            return toolkit.readfile('mol2', f[:-3])
->>>>>>> 6f3ca03... Add reading unpacked files
         else:
             return None
 
     @property
     def decoys(self):
         """Read a decoys file"""
-
         f = os.path.join(self.home, self.dude_id, 'decoys_final.mol2.gz')
         if os.path.isfile(f):
             return toolkit.readfile('mol2', f)
         # check if file is unpacked
-<<<<<<< HEAD
         elif os.path.isfile(f[:-3]):
-            return toolkit.readfile('mol2', f[:-3])
-
-=======
-        elif isfile(f[:-3]):
             return toolkit.readfile('mol2', f[:-3])
         else:
             return None
->>>>>>> 6f3ca03... Add reading unpacked files
